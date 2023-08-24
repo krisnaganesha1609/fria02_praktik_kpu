@@ -3,8 +3,8 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <application
-        android:label="fria02_praktik_kpu"
-        android:name="${applicationName}"
+        android:label="PENDATAAN KPU"
+        android:name="PENDATAAN KPU"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
