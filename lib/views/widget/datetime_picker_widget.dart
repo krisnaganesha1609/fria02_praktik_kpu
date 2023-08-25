@@ -50,7 +50,7 @@ class _DateTimePickerWidgetState extends State<DateTimePickerWidget> {
                   ),
                 ),
               ),
-              const SizedBox(width: 20),
+              const SizedBox(width: 10),
               Text(
                 BoardDateFormat(format).format(widget.d),
                 style: Theme.of(context).textTheme.bodyMedium,
