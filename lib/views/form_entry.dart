@@ -65,6 +65,9 @@ class _FormEntryState extends State<FormEntry> {
       } else {
         await addData();
       }
+    } else {
+      SnackbarService.showFailedSnackbar(
+          context: context, title: "Gagal", message: "Data belum terisi");
     }
   }
 
@@ -257,6 +260,11 @@ class _FormEntryState extends State<FormEntry> {
                                 children: [
                                   TextFormField(
                                     controller: nik,
+                                    validator: (value) {
+                                      if (value!.isEmpty || value == "") {
+                                        return "Mohon Isi Data";
+                                      }
+                                    },
                                     keyboardType: TextInputType.number,
                                     scrollPhysics:
                                         const ClampingScrollPhysics(),
@@ -305,6 +313,11 @@ class _FormEntryState extends State<FormEntry> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   TextFormField(
+                                    validator: (value) {
+                                      if (value!.isEmpty || value == "") {
+                                        return "Mohon Isi Data";
+                                      }
+                                    },
                                     controller: namaLengkap,
                                     keyboardType: TextInputType.text,
                                     scrollPhysics:
@@ -354,6 +367,11 @@ class _FormEntryState extends State<FormEntry> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   TextFormField(
+                                    validator: (value) {
+                                      if (value!.isEmpty || value == "") {
+                                        return "Mohon Isi Data";
+                                      }
+                                    },
                                     controller: nomorHp,
                                     keyboardType: TextInputType.number,
                                     scrollPhysics:
@@ -491,6 +509,11 @@ class _FormEntryState extends State<FormEntry> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   TextFormField(
+                                    validator: (value) {
+                                      if (value!.isEmpty || value == "") {
+                                        return "Mohon Isi Data";
+                                      }
+                                    },
                                     controller: alamat,
                                     keyboardType: TextInputType.text,
                                     scrollPhysics:
