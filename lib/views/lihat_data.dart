@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:fria02_praktik_kpu/db/db.dart';
 import 'package:fria02_praktik_kpu/model/pemilih.dart';
 import 'package:fria02_praktik_kpu/views/form_entry.dart';
+import 'package:fria02_praktik_kpu/views/widget/snackbar_widget.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:intl/intl.dart';
@@ -292,11 +293,23 @@ class _LihatDataState extends State<LihatData> {
               TextButton(
                   onPressed: () async {
                     await InitDatabase.instance.delete(widget.id);
-
-                    if (!mounted) return;
-                    Navigator.of(context).popUntil(
-                      (route) => route.isFirst,
-                    );
+                    try {
+                      if (!mounted) return;
+                      SnackbarService.showSuccessSnackbar(
+                          context: context,
+                          title: "Success",
+                          message: "Sukses Menghapus Data!");
+                      Navigator.of(context).popUntil(
+                        (route) => route.isFirst,
+                      );
+                    } catch (e) {
+                      if (!mounted) return;
+                      SnackbarService.showFailedSnackbar(
+                          context: context,
+                          title: "Failed",
+                          message: "Gagal menambahkan data");
+                      throw Exception(e);
+                    }
                   },
                   child: Text(
                     "Ya",

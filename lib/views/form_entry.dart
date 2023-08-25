@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:fria02_praktik_kpu/db/db.dart';
 import 'package:fria02_praktik_kpu/model/pemilih.dart';
 import 'package:fria02_praktik_kpu/views/widget/datetime_picker_widget.dart';
+import 'package:fria02_praktik_kpu/views/widget/snackbar_widget.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -79,10 +80,15 @@ class _FormEntryState extends State<FormEntry> {
 
     try {
       await InitDatabase.instance.update(data);
-      print("Update Success");
       if (!mounted) return;
+      SnackbarService.showSuccessSnackbar(
+          context: context,
+          title: "Success",
+          message: "Berhasil Mengubah Data!");
       Navigator.of(context).pop();
     } catch (e) {
+      SnackbarService.showFailedSnackbar(
+          context: context, title: "Failed", message: "Gagal menambahkan data");
       throw Exception(e);
     }
   }
@@ -100,10 +106,15 @@ class _FormEntryState extends State<FormEntry> {
 
     try {
       await InitDatabase.instance.create(data);
-      print("Success");
       if (!mounted) return;
+      SnackbarService.showSuccessSnackbar(
+          context: context,
+          title: "Success",
+          message: "Berhasil Menambah Data!");
       Navigator.of(context).pop();
     } catch (e) {
+      SnackbarService.showFailedSnackbar(
+          context: context, title: "Failed", message: "Gagal menambahkan data");
       throw Exception(e);
     }
   }
