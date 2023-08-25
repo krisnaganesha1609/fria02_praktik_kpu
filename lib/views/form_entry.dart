@@ -122,6 +122,11 @@ class _FormEntryState extends State<FormEntry> {
   Future<Position> getCurrentLocation() async {
     bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
+      // ignore: use_build_context_synchronously
+      SnackbarService.showWarningSnackbar(
+          context: context,
+          title: "Warning",
+          message: "Mohon aktifkan fitur Lokasi/GPS!");
       return Future.error('Location services are disabled');
     }
 
@@ -129,6 +134,11 @@ class _FormEntryState extends State<FormEntry> {
     if (permission == LocationPermission.denied) {
       permission == await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
+        // ignore: use_build_context_synchronously
+        SnackbarService.showWarningSnackbar(
+            context: context,
+            title: "Warning",
+            message: "Silakan klik sekali lagi!");
         return Future.error('Location permission denied');
       }
     }
@@ -247,7 +257,7 @@ class _FormEntryState extends State<FormEntry> {
                                 children: [
                                   TextFormField(
                                     controller: nik,
-                                    keyboardType: TextInputType.text,
+                                    keyboardType: TextInputType.number,
                                     scrollPhysics:
                                         const ClampingScrollPhysics(),
                                     decoration: InputDecoration(
@@ -345,7 +355,7 @@ class _FormEntryState extends State<FormEntry> {
                                 children: [
                                   TextFormField(
                                     controller: nomorHp,
-                                    keyboardType: TextInputType.text,
+                                    keyboardType: TextInputType.number,
                                     scrollPhysics:
                                         const ClampingScrollPhysics(),
                                     decoration: InputDecoration(

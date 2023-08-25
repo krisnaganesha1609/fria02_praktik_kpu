@@ -152,7 +152,7 @@ class SnackbarService {
           child: const Icon(Icons.warning)),
       animateFrom: AnimateFrom.fromBottom,
       duration: const Duration(milliseconds: 3500),
-      backgroundColor: Colors.yellow,
+      backgroundColor: Colors.yellow.shade800,
       titleWidget: Text(
         title,
         style: GoogleFonts.ubuntu(
@@ -160,12 +160,15 @@ class SnackbarService {
       ),
       subTitleWidget: Padding(
         padding: const EdgeInsets.only(top: 8.0),
-        child: Text(
-          message,
-          style: GoogleFonts.ubuntu(
-            color: Colors.white,
-            fontWeight: FontWeight.w600,
-            fontSize: 14,
+        child: Flexible(
+          child: Text(
+            message,
+            style: GoogleFonts.ubuntu(
+              color: Colors.white,
+              fontWeight: FontWeight.w600,
+              fontSize: 14,
+            ),
+            maxLines: 2,
           ),
         ),
       ),
